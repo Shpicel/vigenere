@@ -129,3 +129,11 @@ body{
 
 /* Показать выпадающее меню (используйте JS, чтобы добавить этот класс в .dropdown-content содержимого, когда пользователь нажимает на кнопку выпадающего списка) */
 .show {display:block;}
+
+.radio-custom {
+    padding-left: 15px;
+}
+
+.custom-form-button {
+    padding-top: 10px;
+}

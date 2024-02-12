@@ -10,4 +10,5 @@ import lombok.*;
 public class VigenereInput {
     private String text;
     private String key;
+    private String mode;
 }

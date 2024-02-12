@@ -5,7 +5,6 @@ import com.example.demo1.service.VigenereCipher;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,19 +20,16 @@ public class VigenereController {
         return "inputText";
     }
 
-    @PostMapping("/vigenere/encrypt")
+    @PostMapping("/executeAction")
     public String vigenereSubmit(@ModelAttribute VigenereInput vigenereInput, Model model) {
-        String encryptedText = vigenereCipher.encrypt(vigenereInput.getText(), vigenereInput.getKey());
-        model.addAttribute("encryptedText", encryptedText);
-        return "vigenereResult";
+        String result;
+        if (!vigenereInput.getMode().equals("encryption")) {
+            result = vigenereCipher.decrypt(vigenereInput.getText(), vigenereInput.getKey());
+        } else {
+            result = vigenereCipher.encrypt(vigenereInput.getText(), vigenereInput.getKey());
+        }
+        model.addAttribute("result", result);
+        model.addAttribute("vigenereInput", vigenereInput);
+        return "inputText";
     }
-
-    @PostMapping("/vigenere/decrypt")
-    public String vigenereDecrypt(@ModelAttribute VigenereInput vigenereInput, Model model) {
-        String decryptedText = vigenereCipher.decrypt(vigenereInput.getText(), vigenereInput.getKey());
-        model.addAttribute("decryptedText", decryptedText);
-        return "vigenereDecryptResult";
-    }
-
-
 }

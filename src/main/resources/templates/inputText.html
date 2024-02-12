@@ -9,25 +9,49 @@
 <div class="navbar">
     <nav th:replace="~{includes/navbar.html :: nav}"></nav>
 </div>
-<div class="container-fluid well text-center" >
-<h2>Vigenere Cipher</h2>
-    <form action="/encrypt" method="post">
-        <div class="container-fluid">
-            <label for="inputText">Enter Text:</label><br>
-                <input type="text" id="inputText" name="inputText"><br>
-                    <label for="keyword">Keyword:</label><br>
-                <input type="text" id="keyword" name="keyword"><br><br>
-            <button type="submit">Encrypt</button>
-        </div>
-    </form>
+<div class="container-fluid well text-center">
+    <div class="panel-body">
+        <h1>Лаба 1</h1>
+    </div>
 </div>
-<br>
-    <form action="/decrypt" method="post">
-        <label for="inputTextDecrypt">Enter Text to Decrypt:</label><br>
-            <input type="text" id="inputTextDecrypt" name="inputTextDecrypt"><br>
-                <label for="keywordDecrypt">Keyword:</label><br>
-            <input type="text" id="keywordDecrypt" name="keywordDecrypt"><br><br>
-        <button type="submit">Decrypt</button>
-    </form>
+<div class="container">
+    <div class="container">
+        <form action="#" th:action="@{/executeAction}" th:object="${vigenereInput}" method="post">
+            <div class="form-group">
+                <label for="text">Текст:</label>
+                <textarea type="text" class="form-control" id="text" placeholder="Текст" required="required" th:field="*{text}"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="key">Ключ:</label>
+                <input type="text" class="form-control" id="key" required="required" placeholder="Ключ"
+                       th:field="*{key}"/>
+            </div>
+            <div>
+                <input class="form-check-input" required="required" type="radio" name="encryption" id="encryption" value="encryption" checked th:field="*{mode}">
+                <label class="form-check-label radio-custom" for="encryption">
+                    Зашифровать
+                </label>
+            </div>
+            <div>
+                <input class="form-check-input" type="radio" name="encryption" id="decryption" value="decryption" th:field="*{mode}">
+                <label class="form-check-label radio-custom" for="decryption">
+                    Расшифровать
+                </label>
+            </div>
+            <div class="form-group custom-form-button">
+                <button type="submit" class="btn btn-outline-success">Обработать</button>
+            </div>
+        </form>
+    </div>
+    <div class="container" th:if="${result} != null">
+        <div class="form-group" style="">
+            <label for="result">Результат:</label>
+            <textarea type="text" class="form-control" id="result" placeholder="Результат" th:text="${result}"
+                      readonly="readonly"></textarea>
+        </div>
+        <a href="/vigenere" class="btn btn-outline-secondary" role="button" aria-pressed="true">Очистить</a>
+    </div>
+</div>
+<div class="footer" th:replace="~{includes/footer.html :: div}"></div>
 </body>
 </html>

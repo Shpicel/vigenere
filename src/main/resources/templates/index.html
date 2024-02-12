@@ -20,16 +20,10 @@
     <div class="row justify-content-center">
         <div class="col-sm-4 col-md-3 col-lg-2 list-group-item m-1 card_custom" >
             <div class="m-3 h4" style="height: 50px; padding-top: 7%">
-                <p class="text-center ">Новости</p>
+                <p class="text-center ">Лаба 1</p>
             </div>
-            <a th:href="${'/news'}" class="stretched-link"></a>
+            <a th:href="${'/vigenere'}" class="stretched-link"></a>
         </div>
-<!--        <div class="col-sm-4 col-md-3 col-lg-2 list-group-item m-1 card_custom" th:each="tempAut : ${#authentication.authorities}" th:if="(${tempAut.getAuthority()} == 'ROLE_JOURNALIST')">-->
-<!--            <div class="m-3 h4" style="height: 50px; padding-top: 7%">-->
-<!--                <p class="text-center">Мои публикации</p>-->
-<!--            </div>-->
-<!--            <a th:href="${'/publications'}" class="stretched-link"></a>-->
-<!--        </div>-->
     </div>
 </div>
 <div class="footer" th:replace="~{includes/footer.html :: div}"></div>
