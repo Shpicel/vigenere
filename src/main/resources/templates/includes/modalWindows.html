@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="ru">
+<!-- HTML-код модального окна -->
+<div id="infoModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Заголовок модального окна -->
+            <div class="modal-header">
+                <h4 class="modal-title text-left">Информация</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <!-- Основное содержимое модального окна -->
+            <div class="modal-body">
+                <div class="align-items-center">
+                    <span class="text-muted ml-5">&copy; 2022 Jack Stanton's Company, Inc</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="loginModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Заголовок модального окна -->
+            <div class="modal-header">
+                <h4 class="modal-title text-left">Вход</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <!-- Основное содержимое модального окна -->
+
+            <div class="modal-body">
+                <div class="justify-content-center">
+                    <form action="#" th:action="@{/login}" method="post" class="container-fluid w-75">
+                        <div class="form-group">
+                            <label>Логин:</label>
+                            <input type="text" name="username" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Пароль:</label>
+                            <input type="password" name="password" class="form-control" required>
+                        </div>
+                        <button  type="submit" class="btn btn-outline-success container-fluid">Вход</button>
+                        <div th:if="${param.error}" class="alert alert-danger mt-3 container-fluid">
+                            Вы ввели неправильные данные
+                        </div>
+                    </form>
+                    <a class="dropdown-item" href="/registration">Зарегистрироваться</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="accountModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Заголовок модального окна -->
+            <div class="modal-header">
+                <h4 class="modal-title text-left">Информация об аккаунте</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <!-- Основное содержимое модального окна -->
+            <div class="modal-body">
+<!--                <p class="modal-body text-left" th:text="${'Имя польхователя: ' + #authentication.getName()}"></p>-->
+<!--                <p class="modal-body text-left" th:text="${'Роль пользователя: ' + #authentication.authorities}"></p>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

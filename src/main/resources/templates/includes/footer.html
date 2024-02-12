@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="ru">
+<div class="text-center fixed-bottom " style="background: #eeeeee;">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+            <span class="text-muted ml-5">&copy; 2022 Jack Stanton's Company, Inc</span>
+        </div>
+
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex mr-5">
+            <li class="ms-3">
+                <a class="text-muted info-btn" href="#infoModal">
+                    <span class="material-icons">info</span>
+                </a>
+            </li>
+            <li class="ms-3">
+                <a class="text-muted" href="/verif">
+                    <span class="material-icons">verified_user</span>
+                </a>
+            </li>
+<!--            <li class="ms-3" th:if="${#authentication.name} == anonymousUser">-->
+<!--                <a class="text-muted login-modal-btn" href="#loginModal">-->
+<!--                    <span class="material-icons">account_circle</span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li class="ms-3" th:if="${#authentication.name} != anonymousUser">-->
+<!--                <a class="text-muted account-modal-btn" href="#accountModal">-->
+<!--                    <span class="material-icons">account_circle</span>-->
+<!--                </a>-->
+<!--            </li>-->
+            </ul>
+    </footer>
+</div>
+
+</html>

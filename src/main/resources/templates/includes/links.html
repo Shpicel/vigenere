@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="ru">
+<div>
+    <link rel="stylesheet" th:href="@{/css/bootstrapEx.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+
+    <link rel="stylesheet" th:href="@{/css/map.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
+
+    <!-- Подключаем jQuery -->
+    <script src="/js/jquery.min.js"></script>
+
+    <!-- Подключаем Bootstrap JS -->
+    <script src="/js/bootstrap.min.js"></script>
+
+    <!-- Подключаем Выпадающее меню с поиском -->
+    <script src="/js/dropmenu_with_search.js"></script>
+    <!-- Скрипт, привязывающий событие click, открывающее модальное окно, к элементам, имеющим класс .btn -->
+    <script>
+        $(document).ready(function(){
+            $(".info-btn").click(function() {
+                $("#infoModal").modal('show');
+            });
+        });
+        $(document).ready(function(){
+            $(".login-modal-btn").click(function() {
+                $("#loginModal").modal('show');
+            });
+        });
+        $(document).ready(function(){
+            $(".account-modal-btn").click(function() {
+                $("#accountModal").modal('show');
+            });
+        });
+    </script>
+
+    <div th:replace="~{includes/modalWindows.html :: div}"></div>
+</div>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="ru">
+<head>
+</head>
+<body>
+<div th:replace="~{includes/links.html :: div}"></div>
+<div class="navbar">
+    <nav th:replace="~{includes/navbar.html :: nav}"></nav>
+</div>
+<div class="container-fluid well text-center" >
+<h2>Vigenere Cipher</h2>
+    <form action="/encrypt" method="post">
+        <div class="container-fluid">
+            <label for="inputText">Enter Text:</label><br>
+                <input type="text" id="inputText" name="inputText"><br>
+                    <label for="keyword">Keyword:</label><br>
+                <input type="text" id="keyword" name="keyword"><br><br>
+            <button type="submit">Encrypt</button>
+        </div>
+    </form>
+</div>
+<br>
+    <form action="/decrypt" method="post">
+        <label for="inputTextDecrypt">Enter Text to Decrypt:</label><br>
+            <input type="text" id="inputTextDecrypt" name="inputTextDecrypt"><br>
+                <label for="keywordDecrypt">Keyword:</label><br>
+            <input type="text" id="keywordDecrypt" name="keywordDecrypt"><br><br>
+        <button type="submit">Decrypt</button>
+    </form>
+</body>
+</html>
