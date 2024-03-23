@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="~{includes/links.html :: div}"></div>
+<div class="navbar">
+    <nav th:replace="~{includes/navbar.html :: nav}"></nav>
+</div>
+<div class="container-fluid well text-center">
+    <div class="panel-body">
+        <h1>Лаба 2</h1>
+    </div>
+</div>
+<div class="container">
+    <div class="container">
+        <form action="#" th:action="@{/executeAction1}" th:object="${diffieHellmanInput}" method="post">
+            <div class="form-group custom-form-button">
+                <button type="submit" class="btn btn-outline-success">Бахнуть ДХ</button>
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        <form action="#" th:action="@{/executeAction2}" th:object="${diffieHellmanInput}" method="post">
+            <div class="form-group custom-form-button">
+                <button type="submit" class="btn btn-outline-success">Бахнуть массив простых чисел</button>
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        <form action="#" th:action="@{/executeAction3}" th:object="${diffieHellmanInput}" method="post">
+            <div class="form-group custom-form-button">
+                <button type="submit" class="btn btn-outline-success">Бахнуть первообразные</button>
+            </div>
+        </form>
+    </div>
+    <div class="container" th:if="${result} != null">
+        <div class="form-group" style="">
+            <label for="result">Результат:</label>
+            <textarea type="text" class="form-control" id="result" placeholder="Результат" th:text="${result}"
+                      readonly="readonly"></textarea>
+        </div>
+        <a href="/diffiehellman" class="btn btn-outline-secondary" role="button" aria-pressed="true">Очистить</a>
+    </div>
+</div>
+<div class="footer" th:replace="~{includes/footer.html :: div}"></div>
+</body>
+</html>
