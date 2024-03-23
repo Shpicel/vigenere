@@ -20,6 +20,8 @@ public class VigenereController {
         return "inputText";
     }
 
+
+
     @PostMapping("/executeAction")
     public String vigenereSubmit(@ModelAttribute VigenereInput vigenereInput, Model model) {
         String result;
