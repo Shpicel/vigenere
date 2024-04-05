@@ -5,13 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BigIntegerPrimeSieve {
-//    public static void main(String[] args) {
-////        BigIntegerPrimeSieve primeSieve = new BigIntegerPrimeSieve();
-////        BigInteger lowerBound = new BigInteger("222255304413");
-////        BigInteger upperBound = new BigInteger("222255304623");
-////        List<BigInteger> primes = primeSieve.getPrimes(lowerBound, upperBound);
-////        System.out.println("Простые числа в диапазоне от " + lowerBound + " до " + upperBound + ": " + primes);
-//    }
+//    Решето Эратосфена.
 
     public List<BigInteger> getPrimes(BigInteger lowerBound, BigInteger upperBound) {
         long startTime = System.currentTimeMillis();
@@ -25,20 +19,18 @@ public class BigIntegerPrimeSieve {
                     lowerBound.add(i.subtract(lowerBound.mod(i)).mod(i));
             for (BigInteger j = start; j.compareTo(upperBound) <= 0; j = j.add(i)) {
                 isComposite[j.subtract(lowerBound).intValue()] = true;
-//                System.out.println(Arrays.toString(isComposite));
+
             }
         }
 
         for (int k = 0; k < isComposite.length; k++) {
             if (!isComposite[k] && lowerBound.add(BigInteger.valueOf(k)).compareTo(BigInteger.TWO) >= 0) {
                 primes.add(lowerBound.add(BigInteger.valueOf(k)));
-
 //                System.out.println(primes);
             }
         }
         long endTime = System.currentTimeMillis();
-        System.out.println("Время генерации: " + (endTime - startTime) + " мс");
-
+        System.out.println("Время генерации массива простых чисел: " + (endTime - startTime) + " мс");
         return primes;
     }
 }

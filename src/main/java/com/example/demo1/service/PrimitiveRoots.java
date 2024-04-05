@@ -1,18 +1,19 @@
 package com.example.demo1.service;
 
+import org.springframework.stereotype.Service;
+
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class PrimitiveRoots {
-    public List<BigInteger> runPrimitiveRoots() {
+    public List<BigInteger> runPrimitiveRoots(String strInputRoot) {
         long startTime = System.currentTimeMillis();
-        BigInteger n = new BigInteger("222255304489");
-        System.out.println("Первые 100 первообразных корней для числа " + n + ":");
+        BigInteger n = new BigInteger(strInputRoot);
+//        System.out.println("Первые 100 первообразных корней для числа " + n + ":");
         List<BigInteger> primitiveRoots = printPrimitiveRoots(n, 100);
         long endTime = System.currentTimeMillis();
-        long time = endTime - startTime;
-        System.out.println("Время выполнения: " + (endTime - startTime) + " миллисекунд");
+        System.out.println("Время выполнения 100 первообразных: " + (endTime - startTime) + " мс");
         return primitiveRoots;
     }
 
@@ -21,7 +22,7 @@ public class PrimitiveRoots {
         for (BigInteger a = BigInteger.TWO; a.compareTo(n) < 0; a = a.add(BigInteger.ONE)) {
             if (isPrimitiveRoot(a, n)) {
                 primitiveRoots.add(a);
-                System.out.println(a);
+//                System.out.println(a);
                 count--;
                 if (count == 0) {
                     break;

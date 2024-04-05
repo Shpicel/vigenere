@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Laba2</title>
 </head>
 <body>
 <div th:replace="~{includes/links.html :: div}"></div>
@@ -16,21 +16,92 @@
 </div>
 <div class="container">
     <div class="container">
-        <form action="#" th:action="@{/executeAction1}" th:object="${diffieHellmanInput}" method="post">
+        <form action="#" th:action="@{/executeActionGeneratePrime}" th:object="${diffieHellmanInput}" method="post">
+            <div class="form-group">
+                <label for="bitLen">Длина в битах:</label>
+                <textarea type="text" class="form-control" id="bitLen" placeholder="Длина в битах" required="required" th:field="*{bitLen}"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="iteration">Итерации:</label>
+                <input type="text" class="form-control" id="iteration" required="required" placeholder="Итерации"
+                       th:field="*{iteration}"/>
+            </div>
+            <div class="form-group custom-form-button">
+                <button type="submit" class="btn btn-outline-success">Бахнуть простое число</button>
+            </div>
+        </form>
+    </div>
+    <div class="container" th:if="${resultGeneratePrime} != null">
+        <div class="form-group" style="">
+            <label for="resultGeneratePrime">Результат:</label>
+            <textarea type="text" class="form-control" id="resultGeneratePrime" placeholder="Результат" th:text="${resultGeneratePrime}"
+                      readonly="readonly"></textarea>
+        </div>
+        <a href="/diffiehellman" class="btn btn-outline-secondary" role="button" aria-pressed="true">Очистить</a>
+    </div>
+    <div class="container">
+        <form action="#" th:action="@{/executeActionDiffieHellman}" th:object="${diffieHellmanInput}" method="post">
+            <div class="form-group">
+                <label for="privateKeyXa">Ключик Алисы:</label>
+                <textarea type="text" class="form-control" id="privateKeyXa" placeholder="Ключик Алисы" required="required" th:field="*{privateKeyXa}"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="privateKeyXb">Ключик Бобы:</label>
+                <input type="text" class="form-control" id="privateKeyXb" required="required" placeholder="Ключик Бобы"
+                       th:field="*{privateKeyXb}"/>
+            </div>
+            <div class="form-group">
+                <label for="primeNum">Простое число N:</label>
+                <input type="text" class="form-control" id="primeNum" required="required" placeholder="Простое число N"
+                       th:field="*{primeNum}"/>
+            </div>
+            <div class="form-group">
+                <label for="rootPrimeNum">А тут гышка, которая первообразная N:</label>
+                <input type="text" class="form-control" id="rootPrimeNum" required="required" placeholder="g"
+                       th:field="*{rootPrimeNum}"/>
+            </div>
             <div class="form-group custom-form-button">
                 <button type="submit" class="btn btn-outline-success">Бахнуть ДХ</button>
             </div>
         </form>
     </div>
+    <div class="container" th:if="${resultDiffieHellman} != null">
+        <div class="form-group" style="">
+            <label for="resultDiffieHellman">Результат:</label>
+            <textarea type="text" class="form-control" id="resultDiffieHellman" placeholder="Результат" th:text="${resultDiffieHellman}"
+                      readonly="readonly"></textarea>
+        </div>
+        <a href="/diffiehellman" class="btn btn-outline-secondary" role="button" aria-pressed="true">Очистить</a>
+    </div>
     <div class="container">
-        <form action="#" th:action="@{/executeAction2}" th:object="${diffieHellmanInput}" method="post">
+        <form action="#" th:action="@{/executeActionBigIntegerPrimeSieve}" th:object="${diffieHellmanInput}" method="post">
+            <div class="form-group">
+                <label for="lowerBound">Нижняя граница массива простых чисел:</label>
+                <textarea type="text" class="form-control" id="lowerBound" placeholder="Нижняя граница массива простых чисел" required="required" th:field="*{lowerBound}"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="upperBound">Верхняя граница массива простых чисел:</label>
+                <textarea type="text" class="form-control" id="upperBound" placeholder="Верхняя граница массива простых чисел" required="required" th:field="*{upperBound}"></textarea>
+            </div>
             <div class="form-group custom-form-button">
                 <button type="submit" class="btn btn-outline-success">Бахнуть массив простых чисел</button>
             </div>
         </form>
     </div>
+    <div class="container" th:if="${resultBigIntegerPrimeSieve} != null">
+        <div class="form-group" style="">
+            <label for="resultBigIntegerPrimeSieve">Результат:</label>
+            <textarea type="text" class="form-control" id="resultBigIntegerPrimeSieve" placeholder="Результат" th:text="${resultBigIntegerPrimeSieve}"
+                      readonly="readonly"></textarea>
+        </div>
+        <a href="/diffiehellman" class="btn btn-outline-secondary" role="button" aria-pressed="true">Очистить</a>
+    </div>
     <div class="container">
-        <form action="#" th:action="@{/executeAction3}" th:object="${diffieHellmanInput}" method="post">
+        <form action="#" th:action="@{/executeActionPrimitiveRoots}" th:object="${diffieHellmanInput}" method="post">
+            <div class="form-group">
+                <label for="inputRoot">Число из которого получаем первообразные:</label>
+                <textarea type="text" class="form-control" id="inputRoot" placeholder="Число из которого получаем первообразные" required="required" th:field="*{inputRoot}"></textarea>
+            </div>
             <div class="form-group custom-form-button">
                 <button type="submit" class="btn btn-outline-success">Бахнуть первообразные</button>
             </div>
