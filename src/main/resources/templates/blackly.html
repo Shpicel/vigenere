@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="~{includes/links.html :: div}"></div>
+<div class="navbar">
+    <nav th:replace="~{includes/navbar.html :: nav}"></nav>
+</div>
+<div class="container-fluid well text-center">
+    <div class="panel-body">
+        <h1>Лаба 3</h1>
+    </div>
+</div>
+<div class="container">
+    <div class="container">
+        <form action="#" th:action="@{/executeActionBlackly}" th:object="${blacklyInput}" method="post">
+            <div class="form-group">
+                <label for="fileName">Путь к файлу:</label>
+                <textarea type="text" class="form-control" id="fileName" placeholder="Имя файла" required="required" th:field="*{fileName}"></textarea>
+            </div>
+            <div class="form-group custom-form-button">
+                <button type="submit" class="btn btn-outline-success">Выполнить</button>
+            </div>
+        </form>
+    </div>
+    <div class="container" th:if="${resultBlackly} != null">
+        <div class="form-group" style="">
+            <label for="resultBlackly">Результат:</label>
+            <textarea type="text" class="form-control" id="resultBlackly" placeholder="Результат" th:text="${resultBlackly}"
+                      readonly="readonly"></textarea>
+        </div>
+        <a href="/blackly" class="btn btn-outline-secondary" role="button" aria-pressed="true">Очистить</a>
+    </div>
+    <div class="container" th:if="${subResults} != null">
+        <div class="form-group" style="">
+            <label for="subResults">Результат:</label>
+            <textarea type="text" class="form-control" id="subResults" placeholder="Результат" th:text="${subResults}"
+                      readonly="readonly"></textarea>
+        </div>
+        <a href="/blackly" class="btn btn-outline-secondary" role="button" aria-pressed="true">Очистить</a>
+    </div>
+</div>
+</body>
+</html>
