@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="rus">
+<head>
+    <meta charset="UTF-8">
+    <title>Laba4</title>
+</head>
+<body>
+<div th:replace="~{includes/links.html :: div}"></div>
+<div class="navbar">
+    <nav th:replace="~{includes/navbar.html :: nav}"></nav>
+</div>
+<div class="container-fluid well text-center">
+    <div class="panel-body">
+        <h1>Лаба 4</h1>
+    </div>
+</div>
+<div class="container">
+    <div class="container">
+        <form action="#" th:action="@{/executeActionVoting}" th:object="${votingInput}" method="post">
+            <div class="form-group">
+                <label for="countVotes">Количество избирателей:</label>
+                <textarea type="text" class="form-control" id="countVotes" placeholder="Количество избирателей" required="required" th:field="*{countVotes}"></textarea>
+            </div>
+            <div class="form-group custom-form-button">
+                <button type="submit" class="btn btn-outline-success">Избрать Трампа</button>
+            </div>
+        </form>
+    </div>
+    <div class="container" th:if="${resultVoting} != null">
+        <div class="form-group" style="">
+            <label for="resultVoting">Результат:</label>
+            <textarea type="text" class="form-control" id="resultVoting" placeholder="Результат" th:text="${resultVoting}"
+                      readonly="readonly"></textarea>
+        </div>
+        <a href="/voting" class="btn btn-outline-secondary" role="button" aria-pressed="true">Очистить</a>
+    </div>
+<div class="footer" th:replace="~{includes/footer.html :: div}"></div>
+</div>
+</body>
+</html>
